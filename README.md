@@ -108,6 +108,13 @@ class.
 
 
 ### Iterator
+The iterator pattern allows for a user to pass over all the values in a list using the hasNext and next methods. The iterator
+is already available in Java, and can be implemented and used in other iterator classes.
+
+An example of this can be found in the [GenericIterator](src/main/java/com/chrisp1985/gof/iterator/GenericIterator.java)
+class.
+
+### State
 
 
 ### Bridge
@@ -141,4 +148,8 @@ class.
 
 
 ### Prototype
-Basically, cloning an object rather than creating a new expensive one from scratch.
+Basically, cloning an object rather than creating a new expensive one from scratch. Once cloned, it's its own object, so anything
+further done to the original object will not be reflected in the clone's attributes.
+
+An example of this can be found in the [ComplexClass](src/main/java/com/chrisp1985/gof/prototype/ComplexClass.java)
+class.

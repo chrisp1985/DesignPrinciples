@@ -5,6 +5,8 @@ import com.chrisp1985.gof.command.ComputerOffCommand;
 import com.chrisp1985.gof.command.ComputerOnCommand;
 import com.chrisp1985.gof.command.ComputerOnOffButton;
 import com.chrisp1985.gof.factory.*;
+import com.chrisp1985.gof.iterator.GenericIterator;
+import com.chrisp1985.gof.prototype.ComplexClass;
 import com.chrisp1985.gof.strategy.BankAccountPayments;
 import com.chrisp1985.gof.strategy.Payments;
 import com.chrisp1985.gof.strategy.PaypalPayments;
@@ -93,5 +95,30 @@ public class SolidTests {
 
         var spongeFactory = new VictoriaSpongeCakeFactory();
         Cake spongeCake = spongeFactory.orderCake();
+    }
+
+    @Test
+    public void iteratorTest() {
+        GenericIterator<Integer> intIterator = new GenericIterator<>(new Integer[] {1,4,5,10});
+        while(intIterator.hasNext()) {
+            System.out.println(intIterator.next());
+        }
+    }
+
+    @Test
+    public void cloneTest() {
+        ComplexClass complexClass = new ComplexClass();
+        complexClass.setUpdateString("hello");
+        System.out.println("ID of main object: " + complexClass.getId());
+        System.out.println("String of main object: " + complexClass.getUpdateString());
+
+        ComplexClass clonedObject = complexClass.clone();
+        System.out.println("ID of cloned object: " + clonedObject.getId());
+        System.out.println("String of cloned object: " + clonedObject.getUpdateString());
+
+
+        complexClass.setUpdateString("Second Update");
+        System.out.println("String of main object: " + complexClass.getUpdateString());
+        System.out.println("String of cloned object: " + clonedObject.getUpdateString());
     }
 }
