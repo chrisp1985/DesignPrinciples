@@ -51,7 +51,7 @@ class.
 ### Singleton
 The singleton pattern allows for only one instantiation of an object to be in use. It does this by creating a private constructor
 and accessing the object through a getObject() method that either a) returns the object if it's already been instantiated or
-b) creates it for use. In the example case, a single book might be available in a library. You can't create multiple objects,
+b) creates it for use. In the example case, a single smallBook might be available in a library. You can't create multiple objects,
 once it's created once, that's it.
 
 An example of this can be found in the [DesignBookSingleton](src/main/java/com/chrisp1985/gof/singleton/DesignBookSingleton.java)
@@ -67,7 +67,7 @@ class.
 
 ### Decorator
 The decorator pattern allows for continually wrapping around classes to add different behaviours. In the examples, we can have
-a small book, a small red book, a small old red book etc. We can do that by having a decorator class that implements the
+a small smallBook, a small red smallBook, a small old red smallBook etc. We can do that by having a decorator class that implements the
 interface, and then decorators that extend the decorator class.
 
 An example of this can be found in the [OldBookDecorator](src/main/java/com/chrisp1985/solid/openclosed/decorators/OldBookDecorator.java)
@@ -76,7 +76,7 @@ class.
 ### Facade
 The facade basically masks a lot of method calls and classes and brings them together into one class. It means the client
 (in this case, the tests) doesn't have to know where to get all of the bits to do a thing - in this case, it can find, convert
-and reserve a book without needing to know the underlying services necessary.
+and reserve a smallBook without needing to know the underlying services necessary.
 
 An example of this can be found in the [LibraryFacade](src/main/java/com/chrisp1985/gof/facade/SearchService.java)
 class.
@@ -105,7 +105,13 @@ An example of this can be found in the [ComputerOnOffButton](src/main/java/com/c
 class.
 
 ### Observer
+Observer is a bit like the pub/sub event driven design: a class can subscribe to another class that implements the observer
+pattern, and can be notified instantly when changes take place. The notification class needs to know that a party is interested
+which is a slightly different design from things like Kafka, where a service is just sticking an event on a topic without needing
+to know who wants to know about it.
 
+An example of this can be found in the [GenericIterator](src/main/java/com/chrisp1985/gof/iterator/GenericIterator.java)
+class.
 
 ### Iterator
 The iterator pattern allows for a user to pass over all the values in a list using the hasNext and next methods. The iterator
@@ -115,10 +121,20 @@ An example of this can be found in the [GenericIterator](src/main/java/com/chris
 class.
 
 ### State
+The state pattern allows for states to be configured with different behaviours. In one state, press an on/off switch will 
+turn a device on, whilst in the other it will turn it off. If a battery system is in a depleted state, it can't export any
+further energy but can continue to consume, whereas in a filled state it can no longer consume but can export.
 
+An example of this can be found in the [PlaystationState](src/main/java/com/chrisp1985/gof/state/PlaystationState.java)
+class.
 
 ### Bridge
+The Bridge pattern allows for a class to not become overcomplicated by trying to create flexibility. As with the decorator
+pattern, the bridge pattern enables a way for an object to be created with various customisations without needing to create
+a load of subclasses to support all of this variants.
 
+An example of this can be found in the [LuxuryBundle](src/main/java/com/chrisp1985/gof/bridge/LuxuryBundle.java)
+class.
 
 ### Composite
 

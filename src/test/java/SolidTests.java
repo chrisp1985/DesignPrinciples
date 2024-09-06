@@ -1,3 +1,4 @@
+import com.chrisp1985.gof.bridge.*;
 import com.chrisp1985.gof.builder.Book;
 import com.chrisp1985.gof.builder.BookBuilder;
 import com.chrisp1985.gof.builder.Genre;
@@ -6,7 +7,11 @@ import com.chrisp1985.gof.command.ComputerOnCommand;
 import com.chrisp1985.gof.command.ComputerOnOffButton;
 import com.chrisp1985.gof.factory.*;
 import com.chrisp1985.gof.iterator.GenericIterator;
+import com.chrisp1985.gof.observer.EmailListener;
+import com.chrisp1985.gof.observer.LibraryService;
+import com.chrisp1985.gof.observer.SmallBook;
 import com.chrisp1985.gof.prototype.ComplexClass;
+import com.chrisp1985.gof.state.Playstation;
 import com.chrisp1985.gof.strategy.BankAccountPayments;
 import com.chrisp1985.gof.strategy.Payments;
 import com.chrisp1985.gof.strategy.PaypalPayments;
@@ -58,14 +63,14 @@ public class SolidTests {
     public void commandTest() {
         ComputerOffCommand commandOff = new ComputerOffCommand();
         ComputerOnCommand commandOn = new ComputerOnCommand();
-        ComputerOnOffButton computer = new ComputerOnOffButton();
+        ComputerOnOffButton computerButton = new ComputerOnOffButton();
 
-        computer.setCommand(commandOn).pushButton();
-        computer.setCommand(commandOn).pushButton();
-        computer.setCommand(commandOn).pushButton();
-        computer.setCommand(commandOff).pushButton();
-        computer.setCommand(commandOff).pushButton();
-        computer.setCommand(commandOff).pushButton();
+        computerButton.setCommand(commandOn).pushButton();
+        computerButton.setCommand(commandOn).pushButton();
+        computerButton.setCommand(commandOn).pushButton();
+        computerButton.setCommand(commandOff).pushButton();
+        computerButton.setCommand(commandOff).pushButton();
+        computerButton.setCommand(commandOff).pushButton();
     }
 
     @Test
@@ -120,5 +125,60 @@ public class SolidTests {
         complexClass.setUpdateString("Second Update");
         System.out.println("String of main object: " + complexClass.getUpdateString());
         System.out.println("String of cloned object: " + clonedObject.getUpdateString());
+    }
+
+    @Test
+    public void observerTest() {
+        LibraryService libraryService = new LibraryService();
+        SmallBook smallBook = new SmallBook("Observer Design Patterns", "Chris");
+
+        EmailListener dave = new EmailListener("dave@dave.com");
+        EmailListener chris = new EmailListener("chris@chris.com");
+
+        libraryService.subscribeToNotification(chris);
+        libraryService.subscribeToNotification(dave);
+        libraryService.bookReturned(smallBook);
+
+        libraryService.unsubscribeFromNotification(dave);
+        libraryService.bookReturned(smallBook);
+    }
+
+    @Test
+    public void stateTest() {
+        Playstation playstation = new Playstation();
+        playstation.clickControllerButton();
+        playstation.moveThumbstick();
+        playstation.loadGame("Crash Bandicoot");
+        System.out.println("----");
+
+        playstation.clickControllerButton();
+        playstation.moveThumbstick();
+        playstation.loadGame("Colin McRae Rally");
+        System.out.println("----");
+
+        playstation.clickControllerButton();
+        playstation.moveThumbstick();
+        playstation.loadGame("WCW Thunder");
+        System.out.println("----");
+
+        playstation.clickControllerButton();
+        playstation.moveThumbstick();
+        playstation.loadGame("Gran Turismo");
+
+    }
+
+    @Test
+    public void bridgeTest() {
+        var luxury = new LuxuryBundle(new Playstation3Fat());
+        luxury.includeExtras();
+        luxury.playGame();
+        luxury.getDetails();
+
+        System.out.println("---");
+
+        var standard = new StandardBundle(new Playstation3Slim());
+        standard.includeExtras();
+        standard.playGame();
+        standard.getDetails();
     }
 }
