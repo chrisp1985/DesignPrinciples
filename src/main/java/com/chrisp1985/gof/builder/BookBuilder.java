@@ -34,6 +34,6 @@ public class BookBuilder {
     }
 
     public Book build() {
-        return new Book(this.title, this.author, this.ISBN, this.genre, this.isNew);
+        return new Book(this);
     }
 }

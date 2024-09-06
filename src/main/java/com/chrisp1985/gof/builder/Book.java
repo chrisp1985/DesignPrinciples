@@ -8,16 +8,12 @@ public class Book {
     Genre genre;
     Boolean isNew;
 
-    public Book(String title,
-                String author,
-                Long ISBN,
-                Genre genre,
-                Boolean isNew) {
-        this.title = title;
-        this.ISBN = ISBN;
-        this.genre = genre;
-        this.isNew = isNew;
-        this.author = author;
+    public Book(BookBuilder bookBuilder) {
+        this.title = bookBuilder.title;
+        this.ISBN = bookBuilder.ISBN;
+        this.genre = bookBuilder.genre;
+        this.isNew = bookBuilder.isNew;
+        this.author = bookBuilder.author;
     }
 
     public Boolean getIsNew() {
@@ -42,6 +38,10 @@ public class Book {
 
     public Book getBook() {
         return this;
+    }
+
+    public static BookBuilder getBuilder() {
+        return new BookBuilder();
     }
 }
 

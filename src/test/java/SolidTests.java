@@ -75,8 +75,8 @@ public class SolidTests {
 
     @Test
     public void builderTest() {
-        BookBuilder builder = new BookBuilder();
-        Book myBook = builder.setTitle("Builder Design Book")
+        Book myBook = Book.getBuilder()
+                .setTitle("Builder Design Book")
                 .setAuthor("Chris P")
                 .setGenre(Genre.COMEDY)
                 .setISBN(12313452L)
