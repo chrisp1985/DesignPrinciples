@@ -2,7 +2,7 @@ package com.chrisp1985.gof.facade;
 
 public class ReservationService {
 
-    public void reserveBook(Book book) {
+    public void reserveBook(FacadeBook book) {
         System.out.printf("Reserving %s.\n", book.getName());
     }
 

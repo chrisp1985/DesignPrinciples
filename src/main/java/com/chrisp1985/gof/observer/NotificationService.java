@@ -13,12 +13,12 @@ public class NotificationService {
 
     public void subscribe(EmailListener listener) {
         listenerList.add(listener);
-        System.out.printf("New member added: %s\n", listener.getEmailAddress());
+        System.out.printf("New member added: %s\n", listener.emailAddress());
     }
 
     public void unsubscribe(EmailListener listener) {
         listenerList.remove(listener);
-        System.out.printf("Member unsubscribed: %s\n", listener.getEmailAddress());
+        System.out.printf("Member unsubscribed: %s\n", listener.emailAddress());
     }
 
     public void notify(String message) {

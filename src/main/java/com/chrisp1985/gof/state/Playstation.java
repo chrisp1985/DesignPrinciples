@@ -1,8 +1,5 @@
 package com.chrisp1985.gof.state;
 
-import lombok.Setter;
-
-@Setter
 public class Playstation {
 
     PlaystationState state;
@@ -10,6 +7,10 @@ public class Playstation {
     public Playstation() {
         this.state = new PlaystationOnState(this);
         System.out.println("Unpackaged a new Playstation, and turned on straight away!");
+    }
+
+    public void setState(PlaystationState state) {
+        this.state = state;
     }
 
     public void clickControllerButton() {

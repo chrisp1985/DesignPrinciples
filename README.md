@@ -146,7 +146,11 @@ class.
 
 
 ### Chain of Responsibility
+The Chain of Responsibility pattern aims to allow a piece of code to pass responsibility of performing an operation on a
+piece of code if it cannot handle it. It can lead to deep stacktraces if the responsibility is handed on too far.
 
+An example of this can be found in the [ChainOfRespobsibility](src/main/java/com/chrisp1985/gof/chainofresponsibility/ChainOfResponsibility.java)
+class.
 
 ### Interpreter
 

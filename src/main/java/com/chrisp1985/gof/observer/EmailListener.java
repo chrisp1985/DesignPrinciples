@@ -3,13 +3,7 @@ package com.chrisp1985.gof.observer;
 import lombok.Getter;
 
 @Getter
-public class EmailListener implements ListenerInterface{
-
-    private final String emailAddress;
-
-    public EmailListener(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
+public record EmailListener(String emailAddress) implements ListenerInterface {
 
     @Override
     public void update() {

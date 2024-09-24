@@ -1,6 +1,6 @@
 package com.chrisp1985.gof.facade;
 
-public interface Book {
+public interface FacadeBook {
 
     void read();
     String getName();

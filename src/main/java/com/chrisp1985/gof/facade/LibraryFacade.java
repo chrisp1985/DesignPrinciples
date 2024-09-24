@@ -13,15 +13,15 @@ public class LibraryFacade {
         System.out.println("Entering the library.");
     }
 
-    public void searchForBook(Book book) {
+    public void searchForBook(FacadeBook book) {
         this.searchService.searchForBook(book);
     }
 
-    public void reserveBook(Book book) {
+    public void reserveBook(FacadeBook book) {
         this.reservationService.reserveBook(book);
     }
 
-    public void convertBook(Book book) {
+    public void convertBook(FacadeBook book) {
         this.audioConversionService.convertBook(book);
     }
 }

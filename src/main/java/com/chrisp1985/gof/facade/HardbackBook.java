@@ -1,6 +1,6 @@
 package com.chrisp1985.gof.facade;
 
-public class HardbackBook implements Book {
+public class HardbackBook implements FacadeBook {
     String name;
 
     public HardbackBook(String bookName) {
